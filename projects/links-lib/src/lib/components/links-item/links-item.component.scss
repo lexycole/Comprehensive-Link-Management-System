@@ -1,0 +1,19 @@
+ion-item {
+  cursor: var(--links-ui-item-cursor);
+}
+
+.links-ui-favicon {
+  img{
+    width: var( --links-ui-favicon-size );
+    height: var( --links-ui-favicon-size );
+    object-fit: cover;
+  }
+}
+
+.links-ui-title {
+  font-size: var(--links-ui-title-font-size);
+}
+
+.links-ui-url {
+  font-size: var(--links-ui-url-font-size);
+}

@@ -1,0 +1,72 @@
+<ion-header>
+  <ion-toolbar >
+    <ion-title *ngIf="showTitle">{{pageTitle}}</ion-title>
+
+    <ion-buttons slot="end">
+      <ion-button class="links-ui-dismiss-btn" (click)="close()">
+        <ion-icon slot="icon-only" name="close-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content >
+
+  <div style="text-align: center;" *ngIf="result">
+
+    <ion-avatar class="image-center links-ui-favicon" title="link favicon">
+      <img [src]=" result?.favicon?.url || defaultFavicon" alt="favicon">
+    </ion-avatar>
+    <p class="links-ui-title" title="link title">{{result?.title}}</p>
+  </div>
+
+  <form [formGroup]="linkForm">
+  <ion-list>
+    <ion-item>
+      <ion-input #url placeholder="Enter Link Url" class="form-control ion-text-center links-ui-input"
+       formControlName="url">
+      </ion-input>
+    </ion-item>
+
+    <div *ngIf="msg?.['url']?.touched && msg?.['url']?.invalid" style="color: red; padding-left: 5px;">
+      <p *ngIf="msg?.['url']?.errors?.['required']">{{validationMsg1}}</p>
+      <p *ngIf="msg?.['url']?.errors?.['pattern']">{{validationMsg2}}</p>
+    </div>
+  </ion-list>
+</form>
+
+  <ng-container *ngIf="btnPosition === position.IN_CONTENT">
+    <ng-container [ngTemplateOutlet]="pageButtons"></ng-container>
+  </ng-container>
+</ion-content>
+
+<ion-footer *ngIf="btnPosition === position.IN_FOOTER">
+  <ion-toolbar>
+    <ng-container [ngTemplateOutlet]="pageButtons"></ng-container>
+  </ion-toolbar>
+</ion-footer>
+
+<ng-template #pageButtons>
+
+      <ion-grid>
+        <ion-row [ngClass]="{'ion-justify-content-end':btnPosition === position.IN_FOOTER}">
+          <ng-container *ngIf="stage === 0" >
+            <ion-col [size]="btnPosition === position.IN_FOOTER ? 'auto' : '12'">
+              <ion-button class="links-ui-button" [expand]="btnPosition === position.IN_CONTENT?'block':undefined" color="primary" [disabled]="!linkForm.valid" (click)="next()">{{nextBtnText | titlecase}}</ion-button>
+            </ion-col>
+          </ng-container>
+          <ng-container *ngIf="stage === 1">
+            <ion-col [size]="btnPosition === position.IN_FOOTER ? 'auto' : '6'">
+              <ion-button class="links-ui-button" [expand]="btnPosition === position.IN_CONTENT?'block':undefined" color="danger"
+              (click)="back()">{{backBtnText | titlecase}}</ion-button>
+            </ion-col>
+            <ion-col [size]="btnPosition === position.IN_FOOTER ? 'auto' : '6'">
+              <ion-button class="links-ui-button" [expand]="btnPosition === position.IN_CONTENT?'block':undefined"color="secondary"
+              (click)="confirm()">{{confirmBtnText | titlecase}}</ion-button>
+            </ion-col>
+          </ng-container>
+        </ion-row>
+      </ion-grid>
+</ng-template>
+

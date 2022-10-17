@@ -1,0 +1,11 @@
+
+<ion-list *ngFor="let link of links">
+  <links-ui-links-item
+  [link]="link"
+  [deletable]="deletable"
+  (onExplore)="onExploreFunc(link)"
+  (onDelete)="onDeleteFunc(link)"
+  (onCopy)="onCopyFunc(link)"
+  (onShowInfo)="onShowInfoFunc(link)"
+    ></links-ui-links-item>
+</ion-list>

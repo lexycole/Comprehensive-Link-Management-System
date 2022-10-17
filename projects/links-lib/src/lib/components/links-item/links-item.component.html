@@ -1,0 +1,33 @@
+
+  <ion-item (click)="onExploreFunc($event)">
+
+    <ion-thumbnail class="links-ui-favicon ion-justify-content-center
+    ion-align-items-center" slot="start">
+      <img [src]="link?.favicon?.url || defaultFavicon">
+    </ion-thumbnail>
+
+    <ion-label>
+      <h4 class="links-ui-title">{{link.title}}</h4>
+      <a href="javascript:void(0)" class="links-ui-url">{{link.url}}</a>
+    </ion-label>
+
+    <ion-buttons slot="end">
+
+      <ion-button class="links-ui-copy-btn" fill="clear" title="copy url" (click)="onCopyFunc($event)" >
+        <ion-icon slot="icon-only" name="copy-outline"></ion-icon>
+      </ion-button>
+
+      <ion-button class="links-ui-delete-btn" fill="clear"
+      title="delete url"
+      *ngIf="deletable" (click)="onDeleteFunc($event)">
+        <ion-icon slot="icon-only" name="trash-outline" color="danger"></ion-icon>
+      </ion-button>
+
+    </ion-buttons>
+
+    <div *ngIf="">
+      <ion-button>Explore</ion-button>
+      <ion-button>Delete</ion-button>
+      <ion-button>Info</ion-button>
+    </div>
+  </ion-item>

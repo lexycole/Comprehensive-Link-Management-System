@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title class="title" *ngIf="showTitle">
+      {{pageTitle}}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-refresher slot="fixed"
+  (ionRefresh)="refresh($event)"
+  *ngIf="refreshEnabled">
+    <ion-refresher-content
+      pullingIcon="chevron-down-circle-outline"
+      pullingText="Pull to refresh"
+      [refreshingSpinner]="spinnerType"
+      refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <vicky-ionic-ng-loader [progressSpinnerType]="spinnerType" (stateChange)="onLoaderStateChange($event)">
+  </vicky-ionic-ng-loader>
+
+  <links-ui-list [links]="links"
+   [deletable]="canDelete"
+   (onExplore)="explore($event)"
+   (onDelete)="delete($event)"
+   (onCopy)="copy($event)">
+  </links-ui-list>
+
+  <ion-infinite-scroll
+  (ionInfinite)="paginate($event)"
+  *ngIf="infiniteScrollEnabled">
+    <ion-infinite-scroll-content [loadingSpinner]="spinnerType"
+    loadingText="Loading more links...">
+  </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+
+    <ion-fab vertical="bottom"
+    horizontal="end" slot="fixed"
+     *ngIf="showAddBtn">
+      <ion-fab-button (click)="addNewLink()">
+        <ion-icon name="add"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+</ion-content>

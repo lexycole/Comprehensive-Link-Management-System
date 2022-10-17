@@ -1,0 +1,25 @@
+{
+  "name": "ionic-ng-links-ui",
+  "version": "0.0.29",
+  "exports": {
+    ".": {
+      "sass": "./src/lib/theme/variables.scss"
+    }
+  },
+  "peerDependencies": {
+    "@angular/common": "^13.2.0",
+    "@angular/core": "^13.2.0",
+    "@awesome-cordova-plugins/in-app-browser": "^5.40.0",
+    "@ionic-native/clipboard": "^5.36.0",
+    "@ionic/angular": "^6.1.2",
+    "app-base-lib": "^1.0.33",
+    "lodash": "^4.17.21",
+    "vicky-ionic-ng-lib": "^0.0.28"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.14.181"
+  }
+}

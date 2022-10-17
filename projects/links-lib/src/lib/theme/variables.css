@@ -1,0 +1,7 @@
+/** Links Lib CSS Variables **/
+links-ui-links-item {
+  --links-ui-favicon-size: 32px;
+  --links-ui-title-font-size:18px;
+  --links-ui-url-font-size: 13px;
+  --links-ui-item-cursor: pointer;
+}/*# sourceMappingURL=variables.css.map */
